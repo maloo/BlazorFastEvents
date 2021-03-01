@@ -1,0 +1,23 @@
+@page "/"
+
+<h1>Hello, world!</h1>
+
+<fluent-switch checked="@OnOff" @onchange="SwitchChanged">
+    <span slot="checked-message">On</span>
+    <span slot="unchecked-message">Off</span>
+</fluent-switch>
+
+<my-page min="0" max="100" step="1" value="@Slider" @onchange="SliderChanged"></my-page>
+
+@code {
+    bool OnOff { get; set; }
+    int Slider { get; set; }
+
+    public void SwitchChanged(ChangeEventArgs e) {
+        System.Diagnostics.Debug.WriteLine("Switch: " + e.Value + " " + OnOff);
+    }
+
+    public void SliderChanged(ChangeEventArgs e) {
+        System.Diagnostics.Debug.WriteLine("Slider: " + e.Value);
+    }
+}
